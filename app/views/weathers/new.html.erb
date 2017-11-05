@@ -1,0 +1,21 @@
+<h1>Добавление города</h1>
+
+<%= form_tag(addcity_path, method: :get) do %>
+  <%= text_field_tag :city_name %>
+  <%= submit_tag 'Найти' %>
+<% end %>
+
+<% if @cities %>
+  <% @cities['list'].each do |city| %>
+    <h3>
+      <%= city['name'] %>, <%= city['sys']['country'] %>
+    </h3>
+    <h3>
+        <%= form_for @weather, method: :post do |f|%>
+          <%= f.hidden_field :city_name, value: city['name'] %>
+          <%= f.hidden_field :city_id, value: city['id'] %>
+          <%= f.submit 'Сохранить'%>
+        <% end %>
+    </h3>
+  <% end %>
+<% end %>

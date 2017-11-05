@@ -1,0 +1,16 @@
+<h1>Пользователи</h1>
+
+<% @users.each do |user| %>
+  <h2>
+    <%= user.login %>, Админ: <%= user.admin_role %>
+    <h3>
+        <%= form_for user, method: :put do |f|%>
+          <%= f.hidden_field :admin_role, value: !user.admin_role%>
+          <%= f.submit 'Изменить права'%>
+        <% end %>
+    </h3>
+  </h2>
+  <!-- <h2>
+    <%= link_to user.login, edit_user_path(user)  %>
+  </h2> -->
+<% end %>

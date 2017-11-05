@@ -1,0 +1,6 @@
+<% if @city %>
+  <h1><%= @weather.city_name %></h1>
+  <%= image_tag "http://openweathermap.org/img/w/#{@city['weather'][0]['icon']}.png" %>
+  <h2><%= @city['main']['temp'] %> &deg;C</h2>
+  <h2><%= @city['weather'][0]['description'] %></h2>
+<% end %>

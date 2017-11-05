@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
+  def admin?
+    redirect_to root_url unless current_user.admin_role
+  end
+
   def authorize
     redirect_to login_url, alert: 'Необходимо авторизоваться' if current_user.nil?
   end
