@@ -1,6 +1,9 @@
 Metrics/LineLength:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 AllCops:
   Include:
     - '**/Rakefile'
