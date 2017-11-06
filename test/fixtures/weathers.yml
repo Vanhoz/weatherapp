@@ -4,13 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  login: 'MyLogin'
-  password_digest: <%= BCrypt::Password.create('password', cost: 6) %>
-  admin_role: true
+one: 
+  city_name: 'MyCity'
+  city_id: 'MyId'
+  user: one
 # column: value
 #
 two:
-  login: 'MyLogin'
-  password_digest: <%= BCrypt::Password.create('password', cost: 6) %>
+  city_name: 'MyCity'
+  city_id: 'MyId'
+  user: two
 # column: value

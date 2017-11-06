@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Weatherapp</title>
+    <title>Прогноз погоды</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <% if logged_in? -%>
+      Вы вошли как <%= current_user.login %>.
+      <%= link_to "Выйти", logout_path, method: :delete  %>
+    <% else %>
+      <%= link_to "Зарегистрироваться", signup_path %> или
+      <%= link_to "Войти", login_path %>
+    <% end %>
   </head>
 
   <body>

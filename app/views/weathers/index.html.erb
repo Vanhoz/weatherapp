@@ -1,0 +1,7 @@
+<h1>Погода</h1>
+
+<% @weathers.each do |weather| %>
+  <h2>
+    <%= link_to weather.city_name, weather %>
+  </h2>
+<% end %>

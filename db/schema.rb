@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101185708) do
+ActiveRecord::Schema.define(version: 20171105165051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
     t.string "login", null: false
-    t.string "password", null: false
+    t.string "password_digest", null: false
     t.boolean "admin_role", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "weathers", force: :cascade do |t|
+    t.string "city_name", null: false
+    t.string "city_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_weathers_on_user_id"
+  end
+
+  add_foreign_key "weathers", "users"
 end
