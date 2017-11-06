@@ -1,25 +1,16 @@
 # Weather controller
 class WeathersController < ApplicationController
   include ApiCalls
-  before_action :authorize, only: %i[show]
+  before_action :authorize, only: %i[new show]
+  before_action :admin?, only: %i[new]
   def index
     @weathers = Weather.all
   end
 
-  # def add_city
-  #   @weather = Weather.new
-  #   if params[:city_name]
-  #     res = RestClient.get 'http://api.openweathermap.org/data/2.5/find', params:
-  #           { q: "#{params[:city_name]}", type: 'like', lang: 'ru', units: 'metric', APPID: 'e2ff41c4f94d5eebfd2a6593f3b36a01' }
-  #     @cities = JSON.parse res
-  #   end
-  # end
-
   def new
     @weather = Weather.new
-    if params[:city_name]
-      @cities = find_city(params[:city_name])
-    end
+    return unless params[:city_name]
+    @cities = find_city(params[:city_name])
   end
 
   def create
